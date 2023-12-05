@@ -43,6 +43,8 @@ func main() {
 	fileScanner := bufio.NewScanner(file)
 	fileScanner.Split(bufio.ScanLines)
 
+	total := 0
+
 	for fileScanner.Scan() {
 		line := fileScanner.Text()
 
@@ -59,7 +61,11 @@ func main() {
 		if i >= 0 {
 			secondDigit = char
 		}
-		fmt.Printf("%c%c\n", firstDigit, secondDigit)
-	}
 
+		number := (int(firstDigit)-'0')*10 + (int(secondDigit) - '0')
+
+		total += number
+
+	}
+	fmt.Printf("ANSWER: %d\n", total)
 }
